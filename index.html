@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Math</h2>
+
+<p>Math.floor(Math.random() * 10) returns a random integer between 0 and 9 (both 
+included):</p>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="sum"></p>
+
+<script type="text/javascript">
+var x=Math.floor(Math.random() * 11);
+var y=Math.floor(Math.random() * 11);
+var sum=0;
+document.getElementById("demo").innerHTML = x
+document.getElementById("demo1").innerHTML = y
+sum=Number(x)+Number(y);
+console.log("SUM is: " + sum);
+document.getElementById("sum").innerHTML=sum
+</script>
+
+</body>
+</html>
