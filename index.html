@@ -16,20 +16,46 @@
 <p id="demo"></p>
 
 <script type="text/javascript">
-var x=Math.floor(Math.random() * 10)+2;
-var y=Math.floor(Math.random() * 10)+2;
+//var x=Math.floor(Math.random() * 10)+2;
+//var y=Math.floor(Math.random() * 10)+2;
 var random_boolean = Math.random() < 0.5; //50% probability of getting true
 var sum=0;
 var text
 
-//Swap x and y in case y is smaller than x to avoid negative value
 
+/**
+ * Returns a random number between min (inclusive) and max (exclusive)
+ */
+ function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive).
+ * The value is no lower than min (or the next integer greater than min
+ * if min isn't an integer) and no greater than max (or the next integer
+ * lower than max if max isn't an integer).
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var x=getRandomInt(2,11)
+var y=getRandomInt(2,11)
 
 // If TRUE then addition "+" otherwise substraction "-"
 if (random_boolean) {
+
     sum=Number(x)+Number(y);
+    while (sum<10){
+      x=getRandomInt(1,11);
+      sum=Number(x)+Number(y);
+    }
     text = x + " + " + y + " = ?"
 } else {
+    //Swap x and y in case y is smaller than x to avoid negative value
     if (x<y) [x, y] = [y, x];
     sum=Number(x)-Number(y);
     text = x + " - " + y + " = ?"
@@ -62,6 +88,6 @@ function reload() {
     reload = location.reload();
 }
 // Event listeners for reload
-// reloadButton.addEventListener("click", reload, false);
+//reloadButton.addEventListener("click", reload, false);
 
 </script>
