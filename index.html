@@ -4,7 +4,6 @@
 
 <h2>Math for Primary One CARINA</h2>
 
-<p>Adding following two numbers:</p>
 <p>Please enter value for:</p>
 <p id="text"></p>
 
@@ -19,12 +18,25 @@
 <script type="text/javascript">
 var x=Math.floor(Math.random() * 10)+2;
 var y=Math.floor(Math.random() * 10)+2;
+var random_boolean = Math.random() < 0.5; //50% probability of getting true
 var sum=0;
+var text
 
-sum=Number(x)+Number(y);
+//Swap x and y in case y is smaller than x to avoid negative value
+
+
+// If TRUE then addition "+" otherwise substraction "-"
+if (random_boolean) {
+    sum=Number(x)+Number(y);
+    text = x + " + " + y + " = ?"
+} else {
+    if (x<y) [x, y] = [y, x];
+    sum=Number(x)-Number(y);
+    text = x + " - " + y + " = ?"
+}
+console.log("x is: " + x);
+console.log("y is: " + y);
 console.log("SUM is: " + sum);
-
-let text = x + "+" + y + " = ?"
 console.log("text is: " + text);
 
 document.getElementById("text").innerHTML=text
@@ -44,6 +56,15 @@ function myFunction() {
   document.getElementById("demo").innerHTML = text;
 }
 
+const reloadtButton = document.querySelector("#reload");
+// Reload everything:
+function reload() {
+    reload = location.reload();
+}
+// Event listeners for reload
+//reloadButton.addEventListener("click", reload, false);
+
+</script>
 const reloadtButton = document.querySelector("#reload");
 // Reload everything:
 function reload() {
